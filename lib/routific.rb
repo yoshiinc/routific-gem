@@ -81,5 +81,8 @@ class Routific
       raise ArgumentError, "access token must be set" if @@token.nil?
     end
 
+    def on_error(*args, &block)
+      Util.on_error(*args, &block)
+    end
   end
 end
