@@ -28,10 +28,12 @@ module Util
         end
 
         return JSON.parse(response)
+      rescue RestClient::Exception => e
+        on_error.call(e, e.response)
       rescue => e
         on_error.call(e, response)
-        nil
       end
+      nil
     end
 
     def prefix_token(token)
